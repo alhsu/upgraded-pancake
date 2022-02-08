@@ -1,0 +1,62 @@
+---
+title: "RStudio Training Session - Git Hub Version Control in RStudio"
+output: html_notebook
+---
+
+These are the packages I'm using
+
+```{r}
+library(tidyverse)
+```
+
+This is how I get my data - "Environment" tab -> "Import Dataset" -> "From TXT (readr)"
+Paste in data URL (https://raw.githubusercontent.com/philbowsher/Foundation-of-the-R-Workflow-workshop-2019-09-06/master/Examples/data/visits_by_hospital.csv)
+
+```{r}
+library(readr)
+visits_by_hospital <- read_csv("https://raw.githubusercontent.com/philbowsher/Foundation-of-the-R-Workflow-workshop-2019-09-06/master/Examples/data/visits_by_hospital.csv")
+visits_by_hospital
+```
+
+
+Prepping the data
+
+```{r}
+newdata <- visits_by_hospital %>%
+ filter(!(name %in% c("newport hospital", "rhode island hospital"))) %>%
+ filter(!(encounterclass %in% 
+ "wellness")) 
+ 
+newdata
+```
+
+
+
+Visualisation
+
+Addins -> ggplot2_builder
+
+```{r}
+ggplot(newdata) +
+  aes(x = name, y = n) +
+  geom_boxplot(shape = "circle", fill = "#112446") +
+  theme_minimal()
+```
+
+
+
+
+1. create the token
+
+usethis::create_github_token()
+
+2. Redirect to browser and create the token.
+
+3. Go back to R session and execute:
+
+credentials::set_github_pat(FALSE)
+
+
+
+
+
