@@ -10,7 +10,8 @@ library(tidyverse)
 ```
 
 This is how I get my data - "Environment" tab -> "Import Dataset" -> "From TXT (readr)"
-Paste in data URL (https://raw.githubusercontent.com/philbowsher/Foundation-of-the-R-Workflow-workshop-2019-09-06/master/Examples/data/visits_by_hospital.csv)
+Paste in data URL 
+Copy code and paste below
 
 ```{r}
 library(readr)
@@ -44,8 +45,6 @@ ggplot(newdata) +
 ```
 
 
-
-
 1. create the token
 
 usethis::create_github_token()
@@ -56,7 +55,21 @@ usethis::create_github_token()
 
 credentials::set_github_pat(FALSE)
 
+use_git_config(user.name = "alhsu", user.email = "INSERT MY EMAIL HERE")
 
 
+```{r}
+library(usethis)
+
+usethis::create_github_token()
+
+credentials::set_github_pat(FALSE)
+
+use_git_config(user.name = "alhsu", user.email = "INSERT MY EMAIL HERE")
+
+```
+
+
+I find it useful to first create an issue, then create a branch that contains the issue number in the name, then submit a pull request, and finally delete and forget the branch after the pull request is merged.
 
 
